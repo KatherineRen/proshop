@@ -1,12 +1,12 @@
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 dotenv.config();
-const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET, PAYPAL_API_URL } = process.env;
-// import {
-//   PAYPAL_CLIENT_ID,
-//   PAYPAL_APP_SECRET,
-//   PAYPAL_API_URL,
-// } from '../config/getEnv.js';
+// const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET, PAYPAL_API_URL } = process.env;
+import {
+  PAYPAL_CLIENT_ID,
+  PAYPAL_APP_SECRET,
+  PAYPAL_API_URL,
+} from '../config/getEnv.js';
 /**
  * Fetches an access token from the PayPal API.
  * @see {@link https://developer.paypal.com/reference/get-an-access-token/#link-getanaccesstoken}
@@ -16,19 +16,20 @@ const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET, PAYPAL_API_URL } = process.env;
  *
  */
 async function getPayPalAccessToken() {
-  // Authorization header requires base64 encoding
-  // const auth = Buffer.from(PAYPAL_CLIENT_ID + ':' + PAYPAL_APP_SECRET).toString(
-  //   'base64'
-  // );
+  //Authorization header requires base64 encoding
+  const auth = Buffer.from(PAYPAL_CLIENT_ID + ':' + PAYPAL_APP_SECRET).toString(
+    'base64'
+  );
 
-  const auth = Buffer.from(
-    'AZYWqkmMlZUwBFvoLixc6EfINxvtGswQX0eU0ny5TIFnBmTl6iiganoiYhL4uMQK4WACjffaCBUh2R3Y' +
-      ':' +
-      'EErS0xs6xxg1-YRExrZHpiLXbCRil28trVi_49UY812pXLrs71Fy-jg1LczUKURYG0qn_PkTTLsGehY8'
-  ).toString('base64');
+  // const auth = Buffer.from(
+  //   'AZYWqkmMlZUwBFvoLixc6EfINxvtGswQX0eU0ny5TIFnBmTl6iiganoiYhL4uMQK4WACjffaCBUh2R3Y' +
+  //     ':' +
+  //     'EErS0xs6xxg1-YRExrZHpiLXbCRil28trVi_49UY812pXLrs71Fy-jg1LczUKURYG0qn_PkTTLsGehY8'
+  // ).toString('base64');
 
   const url = `${PAYPAL_API_URL}/v1/oauth2/token`;
   // const url = `https://api-m.sandbox.paypal.com/v1/oauth2/token`;
+  console.log(`paypal: ${PAYPAL_API_URL}`);
 
   const headers = {
     Accept: 'application/json',
