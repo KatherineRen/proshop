@@ -1,8 +1,12 @@
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 dotenv.config();
-const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET, PAYPAL_API_URL } = process.env;
-
+// const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET, PAYPAL_API_URL } = process.env;
+import {
+  PAYPAL_CLIENT_ID,
+  PAYPAL_APP_SECRET,
+  PAYPAL_API_URL,
+} from '../config/getEnv.js';
 /**
  * Fetches an access token from the PayPal API.
  * @see {@link https://developer.paypal.com/reference/get-an-access-token/#link-getanaccesstoken}
